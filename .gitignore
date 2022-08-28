@@ -2,6 +2,7 @@
 
 # dependencies
 /admin-panel/node_modules
+/spotify-clone/node_modules
 /.pnp
 .pnp.js
 

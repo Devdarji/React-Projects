@@ -6,7 +6,7 @@ const PlayList = [
     {id: 5, name:"Hip Pop"},
     {id: 6, name:"Workout Music"},
     {id: 7, name:"Gujarati Music"},
-    {id: 7, name:"HollyWood Music"},
+    {id: 8, name:"HollyWood Music"},
 ];
 
 

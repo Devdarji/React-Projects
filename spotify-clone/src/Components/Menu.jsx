@@ -19,7 +19,7 @@ function Menu(props) {
         {props.menuObject &&
           props.menuObject.map((menu) => (
             <li key={menu.id}>
-              <a href="#">
+              <a href={() => false}>
                 <i>{menu.icon}</i>
                 <span>{menu.name}</span>
               </a>

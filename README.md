@@ -6,7 +6,7 @@
 
 ### Project 2
 
-* Spotify Clone
+* [Spotify Clone](https://spotify-clone-96370.web.app/)
 
 ### Project 3
 

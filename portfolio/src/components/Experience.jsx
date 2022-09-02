@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Timeline, TimelineItem } from "vertical-timeline-component-for-react";
+// import { Timeline, TimelineItem } from "vertical-timeline-component-for-react";
 import { Container, Fade } from "react-bootstrap";
 import ReactMarkdown from "react-markdown";
 import PropTypes from "prop-types";
@@ -8,6 +8,8 @@ import Header from "./Header";
 import endpoints from "../constants/EndPoint";
 import FallbackSpinner from "./FallbackSpinner";
 import "../css/experience.css";
+import Timeline from "@mui/lab/Timeline";
+import TimelineItem from "@mui/lab/TimelineItem";
 
 const styles = {
   ulStyle: {

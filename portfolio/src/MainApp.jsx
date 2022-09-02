@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import FallbackSpinner from "./components/FallbackSpinner";
-import NavBarWithRouter from "./components/NavBar";
+// import NavBarWithRouter from "./components/NavBar";
 import Home from "./components/Home";
 import endpoints from "./constants/EndPoint";
 
@@ -17,25 +17,27 @@ function MainApp() {
       .catch((err) => err);
   }, []);
 
+  console.log("===========>", data);
+  
   return (
     <div className="MainApp">
-      <NavBarWithRouter />
+      
       <main className="main">
         <Routes>
-          <Suspense fallback={<FallbackSpinner />}>
-            <Route exact path="/" component={Home} />
-            {data &&
+          <Route exact path="/" element={<Home />} />
+          {data &&
               data.sections.map((route) => {
+                console.log("===========>", route)
                 const SectionComponent = React.lazy(() => import("./components/" + route.component));
+                
                 return (
                   <Route
                     key={route.headerTitle}
                     path={route.path}
-                    component={() => <SectionComponent header={route.headerTitle} />}
+                    element={() => <SectionComponent header={route.headerTitle} />}
                   />
                 );
               })}
-          </Suspense>
         </Routes>
       </main>
     </div>

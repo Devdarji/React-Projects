@@ -1,6 +1,6 @@
 // import { ThemeProvider } from 'react-bootstrap';
 import './App.css';
-import AppContext from './AppContext';
+// import AppContext from './AppContext';
 // import useDarkMode from 'use-dark-mode';
 // import Navbar from './components/Navbar';
 // import Footer from './components/Footer';
@@ -12,29 +12,50 @@ import AppContext from './AppContext';
 // import { lightTheme, darkTheme } from './theme/Theme'
 import {BrowserRouter} from 'react-router-dom';
 import MainApp from './MainApp';
-import GlobalStyles from './theme/GlobalStyle';
-import { ThemeProvider } from 'styled-components';
-
+// import GlobalStyles from './theme/GlobalStyle';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {  orange } from '@mui/material/colors';
+// import NavBarWithRouter from './components/NavBar';
 
 function App() {
 
 
-  // const darkMode = useDarkMode(true);
+  const outerTheme = createTheme({
+    palette: {
+      primary: {
+        main: orange[500],
+      },
+    },
+  });
+
+
+  // const { isDarkMode, toggle, enable, disable } = useDarkMode()
   return (
     // <AppContext.Provider value={{ darkMode }}>
-    <AppContext.Provider>
-      <ThemeProvider >
-        <GlobalStyles />
-        <div className="App">
-          <BrowserRouter>
-            <MainApp />
-          </BrowserRouter>
-        </div>
-      </ThemeProvider>
+    // <AppContext.Provider>
+    // <ThemeProvider theme={isDarkMode ? 'dark' : 'light'}>
+
+    <ThemeProvider theme={outerTheme}>
+      {/* <GlobalStyles /> */}
+      <div className="App">
+        
+        <BrowserRouter>
+          <MainApp />
+  
+        </BrowserRouter>
+      </div>
+
+    </ThemeProvider>
+       
+      // </ThemeProvider>
      
 
 
-    </AppContext.Provider>
+    // </AppContext.Provider>
+
+    // <div>
+    //   <h2>Project Working FIne</h2>
+    // </div>
   );
 }
 

@@ -38,20 +38,21 @@ function About(props) {
       .catch((err) => err);
   }, []);
 
+  console.log(data);
   return (
     <>
       <Header title={header} />
       <div className="section-content-container">
         <Container>
           {data ? (
-            <Fade>
+            // <Fade>
               <Row>
                 <Col style={styles.introTextContainer}>{parseIntro(data.about)}</Col>
                 <Col style={styles.introImageContainer}>
                   <img src={data?.imageSource} alt="profile" />
                 </Col>
               </Row>
-            </Fade>
+            // </Fade>
           ) : (
             <FallbackSpinner />
           )}

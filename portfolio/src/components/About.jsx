@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Col, Container, Fade, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import ReactMarkdown from "react-markdown";
 import endpoints from "../constants/EndPoint";
 import FallbackSpinner from "./FallbackSpinner";
@@ -24,7 +24,7 @@ const styles = {
 };
 
 function About(props) {
-  const { header } = props;
+  const { header } = props;  
   const [data, setData] = useState(null);
 
   const parseIntro = (text) => <ReactMarkdown children={text} />;
@@ -38,7 +38,6 @@ function About(props) {
       .catch((err) => err);
   }, []);
 
-  console.log(data);
   return (
     <>
       <Header title={header} />

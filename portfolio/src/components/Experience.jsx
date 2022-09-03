@@ -52,24 +52,24 @@ function Experience(props) {
       {data ? (
         <div className="section-content-container">
           <Container>
-            <Timeline lineColor={theme.timelineLineColor}>
+            <Timeline>
               {data.map((item) => (
-                <Fade>
+                // <Fade>
                   <TimelineItem
                     key={item.title + item.dateText}
-                    dateText={item.dateText}
-                    dateInnerStyle={{ background: theme.accentColor }}
+                    // dateText={item.dateText}
+                    // dateInnerStyle={{ background: theme.accentColor }}
                     style={styles.itemStyle}
-                    bodyContainerStyle={{ color: theme.color }}
+                    // bodyContainerStyle={{ color: theme.color }}
                   >
                     <h2 className="item-title">{item.title}</h2>
                     <div style={styles.subtitleContainerStyle}>
-                      <h4 style={{ ...styles.subtitleStyle, color: theme.accentColor }}>{item.subtitle}</h4>
+                      <h4 style={{ ...styles.subtitleStyle }}>{item.subtitle}</h4>
                       {item.workType && <h5 style={styles.inlineChild}>&nbsp;· {item.workType}</h5>}
                     </div>
                     <ul style={styles.ulStyle}>
-                      {item.workDescription.map((point) => (
-                        <div key={point}>
+                      {item.workDescription.map((point, index) => (
+                        <div key={index}>
                           <li>
                             <ReactMarkdown
                               children={point}
@@ -83,7 +83,7 @@ function Experience(props) {
                       ))}
                     </ul>
                   </TimelineItem>
-                </Fade>
+                // </Fade>
               ))}
             </Timeline>
           </Container>

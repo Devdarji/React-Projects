@@ -3,7 +3,6 @@ import Typewriter from "typewriter-effect";
 import endpoints from "../constants/EndPoint";
 import Social from "./Social";
 import FallbackSpinner from "./FallbackSpinner";
-import { Fade } from "react-bootstrap";
 
 const styles = {
   nameStyle: {

@@ -3,7 +3,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { NavLink, Navigate } from "react-router-dom";
 import styled, { ThemeContext } from "styled-components";
 import endpoints from "../constants/EndPoint";
-import ThemeToggler from "./ThemeToggler";
+// import ThemeToggler from "./ThemeToggler";
 
 const styles = {
   logoStyle: {
@@ -21,7 +21,7 @@ const ExternalNavLink = styled.a`
     background-color: ${(props) => props.theme.accentColor};
   }
 `;
-
+ 
 const InternalNavLink = styled(NavLink)`
   color: ${(props) => props.theme.navbarTheme.linkColor};
   &:hover {
@@ -36,7 +36,7 @@ const InternalNavLink = styled(NavLink)`
 `;
 
 const NavBar = () => {
-  const theme = useContext(ThemeContext);
+  // const theme = useContext(ThemeContext);
   const [data, setData] = useState(null);
   const [expanded, setExpanded] = useState(false);
 
@@ -80,7 +80,7 @@ const NavBar = () => {
                     rel="noopener noreferrer"
                     onClick={() => setExpanded(false)}
                     className="navbar__link"
-                    theme={theme}
+                    // theme={theme}
                   >
                     {section.title}
                   </ExternalNavLink>
@@ -92,19 +92,19 @@ const NavBar = () => {
                     activeClassName="navbar__link--active"
                     className="navbar__link"
                     to={section.href}
-                    theme={theme}
+                    // theme={theme}
                   >
                     {section.title}
                   </InternalNavLink>
                 )
               )}
           </Nav>
-          <ThemeToggler onClick={() => setExpanded(false)} />
+          {/* <ThemeToggler onClick={() => setExpanded(false)} /> */}
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
 };
 
-const NavBarWithRouter = Navigate(NavBar);
-export default NavBarWithRouter;
+// const NavBarWithRouter = Navigate(NavBar);
+export default NavBar;

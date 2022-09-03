@@ -42,7 +42,7 @@ function Education(props) {
     <>
       <Header title={header} />
       {data ? (
-        <Fade>
+        // <Fade>
           <div style={{ width }} className="section-content-container">
             <Container>
               <Chrono
@@ -52,13 +52,13 @@ function Education(props) {
                 items={data.education}
                 cardHeight={250}
                 mode={mode}
-                theme={{
-                  primary: theme.accentColor,
-                  secondary: theme.accentColor,
-                  cardBgColor: theme.chronoTheme.cardBgColor,
-                  cardForeColor: theme.chronoTheme.cardForeColor,
-                  titleColor: theme.chronoTheme.titleColor,
-                }}
+                // theme={{
+                //   primary: theme.accentColor,
+                //   secondary: theme.accentColor,
+                //   cardBgColor: theme.chronoTheme.cardBgColor,
+                //   cardForeColor: theme.chronoTheme.cardForeColor,
+                //   titleColor: theme.chronoTheme.titleColor,
+                // }}
               >
                 <div className="chrono-icons">
                   {data.education.map((education) =>
@@ -70,7 +70,7 @@ function Education(props) {
               </Chrono>
             </Container>
           </div>
-        </Fade>
+        // </Fade>
       ) : (
         <FallbackSpinner />
       )}

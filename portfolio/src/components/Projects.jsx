@@ -1,9 +1,65 @@
-import React from 'react'
+import React, { useState, useEffect, useContext } from "react";
+import { Container, Row, Button } from "react-bootstrap";
+import { ThemeContext } from "styled-components";
+import PropTypes from "prop-types";
+import Header from "./Header";
+import endpoints from "../constants/EndPoint";
+import ProjectCard from "./Projects/ProjectCard";
+import FallbackSpinner from "./FallbackSpinner";
 
-function Projects() {
+const styles = {
+  containerStyle: {
+    marginBottom: 25,
+  },
+  showMoreStyle: {
+    margin: 25,
+  },
+};
+
+const Projects = (props) => {
+  // const theme = useContext(ThemeContext);
+  const { header } = props;
+  const [data, setData] = useState(null);
+  const [showMore, setShowMore] = useState(false);
+
+  useEffect(() => {
+    fetch(endpoints.projects, {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((res) => setData(res))
+      .catch((err) => err);
+  }, []);
+  const numberOfItems = showMore && data ? data.length : 6;
   return (
-    <div>Projects</div>
-  )
-}
+    <>
+      <Header title={header} />
+      {data ? (
+        <div className="section-content-container">
+          <Container style={styles.containerStyle}>
+            <Row xs={1} sm={1} md={2} lg={3} className="g-4">
+              {data.projects?.slice(0, numberOfItems).map((project,index) => (
+                
+                  <ProjectCard key={index} project={project} />
+              ))}
+            </Row>
 
-export default Projects
+            {!showMore && (
+              <Button style={styles.showMoreStyle} onClick={() => setShowMore(true)}>
+                show more
+              </Button>
+            )}
+          </Container>
+        </div>
+      ) : (
+        <FallbackSpinner />
+      )}
+    </>
+  );
+};
+
+Projects.propTypes = {
+  header: PropTypes.string.isRequired,
+};
+
+export default Projects;

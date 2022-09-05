@@ -41,7 +41,6 @@ function Skills(props) {
     <>
       <Header title={header} />
       {data ? (
-        // <Fade>
           <div className="section-content-container">
             <Container>
               {renderSkillsIntro(data.intro)}
@@ -59,7 +58,6 @@ function Skills(props) {
               ))}
             </Container>
           </div>
-        // </Fade>
       ) : (
         <FallbackSpinner />
       )}

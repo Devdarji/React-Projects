@@ -33,7 +33,6 @@ function Home() {
   }, []);
 
   return data ? (
-    // <Fade>
       <div style={styles.mainContainer}>
         <h1 style={styles.nameStyle}>{data?.name}</h1>
         <div style={{ flexDirection: "row" }}>
@@ -48,7 +47,6 @@ function Home() {
         </div>
         <Social />
       </div>
-    // </Fade>
   ) : (
     <FallbackSpinner />
   );

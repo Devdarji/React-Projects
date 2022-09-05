@@ -5,6 +5,7 @@ import endpoints from "../constants/EndPoint";
 import FallbackSpinner from "./FallbackSpinner";
 import PropTypes from "prop-types";
 import Header from "./Header";
+import NavBar from "./NavBar";
 
 const styles = {
   introTextContainer: {
@@ -40,18 +41,17 @@ function About(props) {
 
   return (
     <>
+      <NavBar/>
       <Header title={header} />
       <div className="section-content-container">
         <Container>
           {data ? (
-            // <Fade>
               <Row>
                 <Col style={styles.introTextContainer}>{parseIntro(data.about)}</Col>
                 <Col style={styles.introImageContainer}>
                   <img src={data?.imageSource} alt="profile" />
                 </Col>
               </Row>
-            // </Fade>
           ) : (
             <FallbackSpinner />
           )}

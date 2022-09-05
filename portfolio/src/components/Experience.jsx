@@ -1,9 +1,7 @@
-import React, { useEffect, useState, useContext } from "react";
-// import { Timeline, TimelineItem } from "vertical-timeline-component-for-react";
-import { Container, Fade } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Container } from "react-bootstrap";
 import ReactMarkdown from "react-markdown";
 import PropTypes from "prop-types";
-import { ThemeContext } from "styled-components";
 import Header from "./Header";
 import endpoints from "../constants/EndPoint";
 import FallbackSpinner from "./FallbackSpinner";
@@ -32,7 +30,6 @@ const styles = {
 };
 
 function Experience(props) {
-  const theme = useContext(ThemeContext);
   const { header } = props;
   const [data, setData] = useState(null);
 
@@ -54,13 +51,9 @@ function Experience(props) {
           <Container>
             <Timeline>
               {data.map((item) => (
-                // <Fade>
                   <TimelineItem
                     key={item.title + item.dateText}
-                    // dateText={item.dateText}
-                    // dateInnerStyle={{ background: theme.accentColor }}
                     style={styles.itemStyle}
-                    // bodyContainerStyle={{ color: theme.color }}
                   >
                     <h2 className="item-title">{item.title}</h2>
                     <div style={styles.subtitleContainerStyle}>
@@ -83,7 +76,6 @@ function Experience(props) {
                       ))}
                     </ul>
                   </TimelineItem>
-                // </Fade>
               ))}
             </Timeline>
           </Container>

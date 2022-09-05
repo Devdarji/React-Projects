@@ -1,9 +1,8 @@
 import { Navbar, Nav, Container } from "react-bootstrap";
-import React, { useEffect, useState, useContext } from "react";
-import { NavLink, Navigate } from "react-router-dom";
-import styled, { ThemeContext } from "styled-components";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import endpoints from "../constants/EndPoint";
-// import ThemeToggler from "./ThemeToggler";
+import "../css/navbar.css";
 
 const styles = {
   logoStyle: {
@@ -12,49 +11,16 @@ const styles = {
   },
 };
 
-const ExternalNavLink = styled.a`
-  color: ${(props) => props.theme.navbarTheme.linkColor};
-  &:hover {
-    color: ${(props) => props.theme.navbarTheme.linkHoverColor};
-  }
-  &::after {
-    background-color: ${(props) => props.theme.accentColor};
-  }
-`;
- 
-const InternalNavLink = styled(NavLink)`
-  color: ${(props) => props.theme.navbarTheme.linkColor};
-  &:hover {
-    color: ${(props) => props.theme.navbarTheme.linkHoverColor};
-  }
-  &::after {
-    background-color: ${(props) => props.theme.accentColor};
-  }
-  &.navbar__link--active {
-    color: ${(props) => props.theme.navbarTheme.linkActiveColor};
-  }
-`;
-
 const NavBar = () => {
-  // const theme = useContext(ThemeContext);
-  const [data, setData] = useState(null);
-  const [expanded, setExpanded] = useState(false);
 
-  useEffect(() => {
-    fetch(endpoints.navbar, {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((res) => setData(res))
-      .catch((err) => err);
-  }, []);
+  
 
   return (
-    <Navbar fixed="top" expand="md" bg="dark" variant="dark" className="navbar-custom" expanded={expanded}>
+    <Navbar fixed="top" expand="lg" bg="dark" variant="dark">
       <Container>
-        {data?.logo && (
-          <Navbar.Brand href="/">
-            <img
+        {/* {data?.logo && ( */}
+        <Navbar.Brand href="/">
+          {/* <img
               src={data?.logo?.source}
               className="d-inline-block align-top"
               alt="main logo"
@@ -63,43 +29,32 @@ const NavBar = () => {
                   ? { height: data?.logo?.height, width: data?.logo?.width }
                   : styles.logoStyle
               }
-            />
-          </Navbar.Brand>
-        )}
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" onClick={() => setExpanded(!expanded)} />
+            /> */}
+          DevArt
+        </Navbar.Brand>
+        {/* )} */}
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto" />
-          <Nav>
-            {data &&
-              data.sections?.map((section, index) =>
-                section?.type === "link" ? (
-                  <ExternalNavLink
-                    key={section.title}
-                    href={section.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => setExpanded(false)}
-                    className="navbar__link"
-                    // theme={theme}
-                  >
-                    {section.title}
-                  </ExternalNavLink>
-                ) : (
-                  <InternalNavLink
-                    key={section.title}
-                    onClick={() => setExpanded(false)}
-                    exact={index === 0}
-                    activeClassName="navbar__link--active"
-                    className="navbar__link"
-                    to={section.href}
-                    // theme={theme}
-                  >
-                    {section.title}
-                  </InternalNavLink>
-                )
-              )}
+          <Nav className="me-auto flex-grow-1 pe-3">
+            <Nav.Link>
+              <Link to="/">Home</Link>
+            </Nav.Link>
+            <Nav.Link>
+              <Link to="/about">About</Link>
+            </Nav.Link>
+            <Nav.Link>
+              <Link to="/skills">Skills</Link>
+            </Nav.Link>
+            <Nav.Link>
+              <Link to="/education">Education</Link>
+            </Nav.Link>
+            <Nav.Link>
+              <Link to="/experience">Experience</Link>
+            </Nav.Link>
+            <Nav.Link>
+              <Link to="/projects">Projects</Link>
+            </Nav.Link>
           </Nav>
-          {/* <ThemeToggler onClick={() => setExpanded(false)} /> */}
         </Navbar.Collapse>
       </Container>
     </Navbar>

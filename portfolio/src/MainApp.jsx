@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-// import FallbackSpinner from "./components/FallbackSpinner";
-// import NavBarWithRouter from "./components/NavBar";
 import Home from "./components/Home";
 import About from "./components/About";
 import Skills from "./components/Skills";
@@ -36,19 +34,7 @@ function MainApp() {
           <Route exact path="/education" element={<Education header="Education" />} />
           <Route exact path="/experience" element={<Experience header="Experience" />} />
           <Route exact path="/projects" element={<Projects header="Projects" />} />
-          {/* {data &&
-              data.sections.map((route) => {
-                console.log("===========>", route)
-                const SectionComponent = React.lazy(() => import("./components/" + route.component));
-                
-                return (
-                  <Route
-                    key={route.headerTitle}
-                    path={route.path}
-                    element={() => <SectionComponent header={route.headerTitle} />}
-                  />
-                );
-              })} */}
+
         </Routes>
       </main>
     </div>
